@@ -1,6 +1,7 @@
 
 import numpy as np
-
+import pdb
+import random
 
 def gen_data_batch(batch_size, start, end):
     '''sample a mini-batch from the interval (start, end)
@@ -9,9 +10,18 @@ def gen_data_batch(batch_size, start, end):
         start: start number
         end: end number
     '''
-    numbers_1 = np.random.randint(start, end, batch_size)
-    numbers_2 = np.random.randint(start, end, batch_size)
-    results = numbers_1 + numbers_2
+    
+    numbers_1 = []
+    numbers_2 = []
+    results = []
+    for i in range(batch_size):
+        num1 = random.randint(start, end)
+        num2 = random.randint(start, end)
+        result = num1+num2
+        numbers_1.append(num1)
+        numbers_2.append(num2)
+        results.append(result)
+
     return numbers_1, numbers_2, results
 
 
@@ -70,6 +80,7 @@ def prepare_batch(Nums1, Nums2, results, maxlen):
         Nums2: shape(batch_size, maxlen)
         results: shape(batch_size, maxlen)
     '''
+
     Nums1 = [convertNum2Digits(o) for o in Nums1]
     Nums2 = [convertNum2Digits(o) for o in Nums2]
     results = [convertNum2Digits(o) for o in results]
