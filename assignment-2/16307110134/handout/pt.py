@@ -79,7 +79,6 @@ def evaluate(model):
     print('accuracy is: %g' % np.mean([o[0]==o[1] for o in zip(datas[2], res)]))
 
 
-
 def pt_main():
     model = myPTRNNModel()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=0.001)
@@ -91,9 +90,4 @@ def pt_adv_main():
     '''
     Please finish your code here.
     '''
-<<<<<<< HEAD
     pass
-=======
-    pass
-
->>>>>>> 6068db448be06adf250dfe901c8a3e5dbb57173f
